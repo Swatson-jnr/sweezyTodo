@@ -7,6 +7,7 @@ import loader from "../assets/loader.mp4";
 const TodoCard = ({
   title,
   description,
+  priority,
   onEdit,
   onDelete,
   todoId,
@@ -78,7 +79,7 @@ const TodoCard = ({
         {/* Bottom section */}
         <div className="flex flex-col sm:flex-row justify-between text-sm gap-2 mt-4 sm:mt-auto">
           <h1>
-            <span className="font-bold">Priority:</span> Medium
+            <span className="font-bold">Priority:</span> {priority}
           </h1>
           <h1>
             <span className="font-bold">Status:</span> Pending

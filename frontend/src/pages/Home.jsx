@@ -124,6 +124,7 @@ const Home = () => {
                   <TodoCard
                     key={index}
                     title={todo.title}
+                    priority={todo.priority}
                     todoId={todo._id}
                     getAllTodos={getAllTodos}
                     createdAt={todo.createdAt}

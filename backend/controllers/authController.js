@@ -47,8 +47,8 @@ export const register = async (req, res) => {
     await transporter.sendMail({
       from: process.env.SENDER_EMAIL,
       to: email,
-      subject: "Welcome to Authenticator",
-      text: `Welcome to Authenticator website. Your Account has been created with email id: ${email}`,
+      subject: "Welcome to SweezyToDo",
+      text: `Welcome to SweezyToDo web app. Your Account has been created with email id: ${email}`,
     });
 
     //generating otp
@@ -102,21 +102,6 @@ export const login = async (req, res) => {
     });
 
     return res.json({ success: true, token, user });
-  } catch (error) {
-    res.json({ success: false, message: error.message });
-  }
-};
-
-export const logout = async (req, res) => {
-  try {
-    res.clearCookie("token", {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
-      maxAge: 7 * 24 * 60 * 60 * 1000,
-    });
-
-    return res.json({ success: true, message: "Logged out" });
   } catch (error) {
     res.json({ success: false, message: error.message });
   }

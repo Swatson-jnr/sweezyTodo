@@ -6,7 +6,6 @@ import { Link, useNavigate } from "react-router-dom";
 
 const VerifyEmail = () => {
   const [loading, setLoading] = useState(false);
-  const [isOtpSubmitted, setIsOtpSubmitted] = useState(false);
   const inputRefs = useRef([]);
   const navigate = useNavigate();
 
@@ -31,6 +30,7 @@ const VerifyEmail = () => {
       }
     });
   };
+  678543;
 
   const resendOtp = async (e) => {
     e.preventDefault();
@@ -71,7 +71,6 @@ const VerifyEmail = () => {
 
       if (response.data.success) {
         toast.success("Account verified successfully");
-        setIsOtpSubmitted(true);
         navigate("/");
       } else {
         toast.error(response.data.message || "Invalid OTP");

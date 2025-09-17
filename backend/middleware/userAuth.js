@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 
 const userAuth = async (req, res, next) => {
   try {
-    const authHeader = req.headers["authorization"]; // lowercase in Node
+    const authHeader = req.headers["authorization"];
     if (!authHeader) {
       return res
         .status(401)
@@ -11,6 +11,7 @@ const userAuth = async (req, res, next) => {
 
     // Expect "Bearer <token>"
     const token = authHeader.split(" ")[1];
+
     if (!token) {
       return res
         .status(401)

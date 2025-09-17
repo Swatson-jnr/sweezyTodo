@@ -5,9 +5,7 @@ import connectDB from "./config/mongodb.js";
 import authRouter from "./routes/authRoutes.js";
 import userRouter from "./routes/userRoutes.js";
 import todoRouter from "./routes/todoRoutes.js";
-import cookieParser from "cookie-parser"
-// import authRouter from "./server/routes/authRoutes.js";
-// import userRouter from "./routes/userRoutes.js";
+import cookieParser from "cookie-parser";
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -15,7 +13,7 @@ connectDB();
 
 app.use(express.json());
 app.use(cors({ credentials: true }));
-app.use(cookieParser())
+app.use(cookieParser());
 
 app.get("/", (req, res) => res.send("API IS WORKING JUST FINE"));
 app.use("/api/auth", authRouter);

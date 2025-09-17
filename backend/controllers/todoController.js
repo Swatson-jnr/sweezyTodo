@@ -60,7 +60,7 @@ export const updateTodo = async (req, res) => {
   try {
     const userId = req.user.id;
     const todoId = req.params.id;
-    const { title, description, inProgress, completed, dueDate } = req.body;
+    const { title, description, priority } = req.body;
     console.log(todoId);
 
     if (!title || !description) {
@@ -76,9 +76,7 @@ export const updateTodo = async (req, res) => {
         $set: {
           "todo.$.title": title,
           "todo.$.description": description,
-          "todo.$.inProgress": inProgress,
-          "todo.$.completed": completed,
-          "todo.$.dueDate": dueDate,
+          "todo.$.priority": priority,
         },
       },
       { new: true }
@@ -120,7 +118,7 @@ export const deleteTodo = async (req, res) => {
         .json({ success: false, message: "Todo not found" });
     }
 
-    todo.deleteOne(); // ✅ safe now
+    todo.deleteOne(); //
     await user.save();
 
     res.status(200).json({
